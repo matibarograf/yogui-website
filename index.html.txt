@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>yogui hummus</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--terracota:#C96F4A;
+--celeste:#A8C7C9;
+--crema:#F3EDE4;
+--arena:#E9E2D8;
+--text:#3a3a3a;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+color:var(--text);
+background:#ffffff;
+line-height:1.6;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+background:white;
+}
+
+.logo{
+font-size:28px;
+font-weight:600;
+color:var(--terracota);
+}
+
+nav a{
+text-decoration:none;
+margin-left:25px;
+color:#555;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:80px 8%;
+background:var(--crema);
+flex-wrap:wrap;
+}
+
+.hero-text{
+max-width:500px;
+}
+
+.hero h1{
+font-size:42px;
+color:var(--terracota);
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+margin-bottom:30px;
+}
+
+.hero img{
+width:420px;
+border-radius:12px;
+}
+
+.btn{
+background:var(--terracota);
+color:white;
+padding:12px 24px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+}
+
+/* FILOSOFIA */
+
+.section{
+padding:80px 10%;
+text-align:center;
+}
+
+.section h2{
+font-size:32px;
+margin-bottom:20px;
+color:var(--terracota);
+}
+
+.section p{
+max-width:650px;
+margin:auto;
+font-size:17px;
+}
+
+/* PRODUCTOS */
+
+.products{
+display:flex;
+gap:40px;
+margin-top:40px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:14px;
+width:260px;
+box-shadow:0 6px 20px rgba(0,0,0,0.05);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.card h3{
+color:var(--terracota);
+margin-bottom:10px;
+}
+
+/* BENEFICIOS */
+
+.benefits{
+background:var(--arena);
+}
+
+.benefit-grid{
+display:flex;
+gap:40px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.benefit{
+width:220px;
+}
+
+/* CONTACTO */
+
+.contact{
+text-align:center;
+padding:70px 10%;
+}
+
+.social{
+margin-top:20px;
+}
+
+.social a{
+margin:0 10px;
+text-decoration:none;
+color:var(--terracota);
+font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+background:#fafafa;
+font-size:13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.hero img{
+margin-top:30px;
+width:90%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">yogui</div>
+
+<div>
+<a href="#filosofia">filosofía</a>
+<a href="#productos">productos</a>
+<a href="#contacto">contacto</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>hummus simple, natural y nutritivo</h1>
+
+<p>
+En yogui creemos que comer bien debería ser simple. 
+Hummus artesanal hecho con ingredientes reales, 
+pensado para la vida cotidiana.
+</p>
+
+<a class="btn" href="#productos">ver productos</a>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1604908176997-4310c89c4eaf?q=80&w=1000" alt="hummus">
+
+</section>
+
+<section class="section" id="filosofia">
+
+<h2>Nuestra filosofía</h2>
+
+<p>
+yogui nace de una idea simple: crear alimentos vegetales 
+nutritivos que puedan formar parte de la vida diaria. 
+Sin complicaciones, sin excesos, solo ingredientes reales 
+y una forma más consciente de comer.
+</p>
+
+</section>
+
+<section class="section" id="productos">
+
+<h2>Nuestros productos</h2>
+
+<div class="products">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1631515242808-497c3d7f0f06?q=80&w=800">
+
+<h3>Hummus tradicional</h3>
+
+<p>
+La receta clásica de garbanzos, tahini y aceite de oliva extra virgen.
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1662116765994-1e4200c43589?q=80&w=800">
+
+<h3>Hummus roasted garlic</h3>
+
+<p>
+Nuestra versión con ajo asado que aporta un sabor más profundo y suave.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section benefits">
+
+<h2>Por qué yogui hummus</h2>
+
+<div class="benefit-grid">
+
+<div class="benefit">
+<h3>Sin octógonos</h3>
+<p>Receta equilibrada pensada para una alimentación consciente.</p>
+</div>
+
+<div class="benefit">
+<h3>Fuente de proteínas</h3>
+<p>Los garbanzos aportan proteínas vegetales y fibra natural.</p>
+</div>
+
+<div class="benefit">
+<h3>Aceite de oliva</h3>
+<p>Utilizamos aceite de oliva extra virgen como base de sabor.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="contact" id="contacto">
+
+<h2>Contacto</h2>
+
+<p>
+¿Querés vender yogui o saber más sobre nuestros productos?
+</p>
+
+<div class="social">
+
+<a href="#">Instagram</a>
+<a href="#">Email</a>
+<a href="#">WhatsApp</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 yogui hummus
+
+</footer>
+
+</body>
+
+</html>
