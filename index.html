@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Yogui Hummus — hummus simple, natural y nutritivo. Sin octógonos, fuente de proteínas, con aceite de oliva extra virgen.">
- 
+<meta name="description" content="Yogui Hummus — EL hummus más simple, rico y sano. Sin octógonos, fuente de proteínas, con aceite de oliva extra virgen.">
+
 <title>yogui hummus</title>
- 
+
 <link rel="icon" type="image/png" href="favicon.png">
- 
+
 <!-- Preconnect para acelerar carga de Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
- 
+
 <style>
- 
+
 :root {
   --terracota: #C96F4A;
   --celeste: #A8C7C9;
@@ -23,24 +23,24 @@
   --arena: #E9E2D8;
   --text: #3a3a3a;
 }
- 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
- 
+
 h1, h2, h3 {
   font-family: 'Fraunces', serif;
 }
- 
+
 body {
   font-family: 'DM Sans', sans-serif;
   color: var(--text);
 }
- 
+
 /* NAV */
- 
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -52,17 +52,17 @@ nav {
   z-index: 100;
   transition: box-shadow 0.3s ease;
 }
- 
+
 nav.scrolled {
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
- 
+
 .logo img {
   height: 100px;
   width: auto;
   display: block;
 }
- 
+
 nav a {
   text-decoration: none;
   margin-left: 25px;
@@ -70,13 +70,13 @@ nav a {
   font-size: 0.875rem; /* 14px en rem */
   transition: color 0.2s ease;
 }
- 
+
 nav a:hover {
   color: var(--terracota);
 }
- 
+
 /* HERO */
- 
+
 .hero {
   display: flex;
   align-items: center;
@@ -85,29 +85,29 @@ nav a:hover {
   background: var(--lino);
   flex-wrap: wrap;
 }
- 
+
 .hero-text {
   max-width: 500px;
 }
- 
+
 .hero h1 {
   font-size: 2.875rem; /* ~46px */
   color: var(--terracota);
   margin-bottom: 20px;
 }
- 
+
 .hero p {
   font-size: 1.125rem; /* 18px */
   margin-bottom: 30px;
   line-height: 1.7;
 }
- 
+
 .hero img {
   max-width: 500px;
   width: 100%;
   border-radius: 12px;
 }
- 
+
 .btn {
   background: var(--terracota);
   color: white;
@@ -118,34 +118,34 @@ nav a:hover {
   transition: background 0.2s ease, transform 0.1s ease;
   display: inline-block;
 }
- 
+
 .btn:hover {
   background: #b85e3a;
   transform: translateY(-1px);
 }
- 
+
 /* FILOSOFIA */
- 
+
 .section {
   padding: 80px 10%;
   text-align: center;
 }
- 
+
 .section h2 {
   font-size: 2rem; /* 32px */
   margin-bottom: 20px;
   color: var(--terracota);
 }
- 
+
 .section p {
   max-width: 650px;
   margin: auto;
   font-size: 1.0625rem; /* 17px */
   line-height: 1.8;
 }
- 
+
 /* PRODUCTOS */
- 
+
 .products {
   display: flex;
   gap: 40px;
@@ -153,7 +153,7 @@ nav a:hover {
   justify-content: center;
   flex-wrap: wrap;
 }
- 
+
 .card {
   background: white;
   padding: 30px;
@@ -162,34 +162,34 @@ nav a:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
- 
+
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
 }
- 
+
 .card img {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 15px;
 }
- 
+
 .card h3 {
   color: var(--terracota);
   margin-bottom: 10px;
 }
- 
+
 .card p {
   font-size: 0.9375rem;
   line-height: 1.6;
 }
- 
-/* BENEFICIOS */
- 
+
+/* BENEFICIOS — flip cards */
+
 .benefits {
   background: var(--arena);
 }
- 
+
 .benefit-grid {
   display: flex;
   gap: 40px;
@@ -197,33 +197,87 @@ nav a:hover {
   flex-wrap: wrap;
   margin-top: 40px;
 }
- 
+
+/* Contenedor externo */
 .benefit {
   width: 220px;
+  height: 160px;
+  perspective: 1000px;
+  cursor: pointer;
 }
- 
-.benefit p {
+
+/* Pieza giratoria */
+.benefit-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 14px;
+}
+
+/* Al hacer click, gira */
+.benefit.flipped .benefit-inner {
+  transform: rotateY(180deg);
+}
+
+/* Cara frontal y trasera — base compartida */
+.benefit-front,
+.benefit-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Frente */
+.benefit-front {
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  flex-direction: column;
+}
+
+.benefit-front h3 {
+  color: #5a5550;
   font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text);
+  line-height: 1.4;
+  text-align: center;
 }
- 
+
+/* Dorso */
+.benefit-back {
+  background: var(--terracota);
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+.benefit-back p {
+  color: white;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
 /* CONTACTO */
- 
+
 .contact {
   text-align: center;
   padding: 70px 10%;
 }
- 
+
 .contact p {
   font-size: 1.0625rem;
   margin-bottom: 10px;
 }
- 
+
 .social {
   margin-top: 20px;
 }
- 
+
 .social a {
   margin: 0 10px;
   text-decoration: none;
@@ -231,13 +285,13 @@ nav a:hover {
   font-weight: 600;
   transition: opacity 0.2s ease;
 }
- 
+
 .social a:hover {
   opacity: 0.75;
 }
- 
+
 /* FOOTER */
- 
+
 footer {
   text-align: center;
   padding: 30px;
@@ -245,138 +299,138 @@ footer {
   font-size: 0.8125rem; /* 13px */
   color: #888;
 }
- 
+
 /* RESPONSIVE — tablets */
- 
+
 @media (max-width: 900px) {
- 
+
   .hero {
     flex-direction: column;
     text-align: center;
   }
- 
+
   .hero img {
     margin-top: 30px;
     width: 100%;
   }
- 
+
 }
- 
+
 /* RESPONSIVE — móviles */
- 
+
 @media (max-width: 480px) {
- 
+
   nav {
     padding: 18px 5%;
   }
- 
+
   .logo img {
     height: 70px;
   }
- 
+
   nav a {
     margin-left: 14px;
     font-size: 0.8125rem;
   }
- 
+
   .hero {
     padding: 50px 5%;
   }
- 
+
   .hero h1 {
     font-size: 2rem;
   }
- 
+
   .hero p {
     font-size: 1rem;
   }
- 
+
   .section {
     padding: 60px 5%;
   }
- 
+
   .section h2 {
     font-size: 1.625rem;
   }
- 
+
   .card {
     width: 100%;
   }
- 
+
   .benefit {
     width: 100%;
   }
- 
+
 }
- 
+
 </style>
- 
+
 </head>
- 
+
 <body>
- 
+
 <nav aria-label="Navegación principal">
- 
+
   <div class="logo">
     <a href="#">
       <img src="./yogui_logo_A-removebg.png" alt="yogui hummus — ir al inicio">
     </a>
   </div>
- 
+
   <div>
     <a href="#filosofia">filosofía</a>
     <a href="#productos">productos</a>
     <a href="#contacto">contacto</a>
   </div>
- 
+
 </nav>
- 
+
 <section class="hero">
- 
+
   <div class="hero-text">
- 
+
     <h1>hummus simple, natural y nutritivo</h1>
- 
+
     <p>
       comer bien es simple. <br>
       hummus, <br>
       para todos los días.
     </p>
- 
+
     <a class="btn" href="#productos">ver productos</a>
- 
+
   </div>
- 
+
   <!-- fetchpriority="high" para que el navegador cargue esta imagen primero -->
   <img
     src="./Hummus_Plato_Lateral.png"
     alt="plato de hummus yogui"
     fetchpriority="high"
   >
- 
+
 </section>
- 
+
 <section class="section" id="filosofia">
- 
+
   <h2>nuestra filosofía</h2>
- 
+
   <p>
-    yogui nace de una idea simple: <br>
+    Yogui nace de una idea simple: <br>
     crear alimentos que funcionen como una solución cotidiana. <br>
-    para comer simple y bien todos los días. <br>
+    para comer bien y simple todos los días. <br>
     <br>
-    <b>el camino para sentirte bien — <br>
+    <b>El camino para sentirte bien — <br>
     el camino yogui.</b>
   </p>
- 
+
 </section>
- 
+
 <section class="section" id="productos">
- 
+
   <h2>nuestros productos</h2>
- 
+
   <div class="products">
- 
+
     <div class="card">
       <!-- loading="lazy" para imágenes debajo del fold -->
       <img
@@ -386,11 +440,11 @@ footer {
       >
       <h3>hummus</h3>
       <p>
-        con un toque de limón y tahini <br>
-        el de todos los días
+        Con un toque de limón y tahini. <br>
+        El de todos los días.
       </p>
     </div>
- 
+
     <div class="card">
       <img
         src="./hummus_pote250cc_ajoasado.png"
@@ -399,65 +453,87 @@ footer {
       >
       <h3>hummus ajo asado</h3>
       <p>
-        para los más intensos <br>
-        con ajos, <br>
-        asados por al menos 3 horas
+        Con ajos que asamos <br> 
+       por al menos 3 horas. <br>
+       Intenso y equilibrado.
       </p>
     </div>
- 
+
   </div>
- 
+
 </section>
- 
+
 <section class="section benefits" aria-label="Por qué elegir yogui hummus">
- 
+
   <h2>por qué yogui hummus</h2>
- 
+
   <div class="benefit-grid">
- 
-    <div class="benefit">
-      <h3>sin octógonos</h3>
+
+    <div class="benefit" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" aria-label="sin octógonos — hacé click para saber más">
+      <div class="benefit-inner">
+        <div class="benefit-front">
+          <h3>sin octógonos</h3>
+        </div>
+        <div class="benefit-back">
+          <p>El primer hummus sin octógonos, sin excesos. <br> Sano en serio.</p>
+        </div>
+      </div>
     </div>
- 
-    <div class="benefit">
-      <h3>fuente de proteínas</h3>
+
+    <div class="benefit" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" aria-label="fuente de proteínas — hacé click para saber más">
+      <div class="benefit-inner">
+        <div class="benefit-front">
+          <h3>fuente de proteínas</h3>
+        </div>
+        <div class="benefit-back">
+          <p>Para acompañar al desarrollo y regeneración muscular.</p>
+        </div>
+      </div>
     </div>
- 
-    <div class="benefit">
-      <h3>con aceite de oliva extra virgen</h3>
+
+    <div class="benefit" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" aria-label="aceite de oliva extra virgen — hacé click para saber más">
+      <div class="benefit-inner">
+        <div class="benefit-front">
+          <h3>aceite de oliva extra virgen</h3>
+        </div>
+        <div class="benefit-back">
+          <p>Aceite de la mejor calidad. <br> Rico y nutritivo.</p>
+        </div>
+      </div>
     </div>
- 
+
   </div>
- 
+
 </section>
- 
+
 <section class="contact" id="contacto">
- 
+
   <h2>contacto</h2>
- 
+
   <p>¿querés vender yogui o saber más sobre nuestros productos?</p>
- 
+
   <div class="social">
-    <!-- Reemplazá # con tus links reales cuando los tengas -->
     <a href="https://instagram.com/yogui.arg" target="_blank" rel="noopener noreferrer">instagram</a>
-    <a href="mailto:barografmatias@gmail.com">email</a>
+    <a href="barografmatias@gmail.com">email</a>
     <a href="https://wa.me/5493413259197" target="_blank" rel="noopener noreferrer">whatsApp</a>
   </div>
- 
+
 </section>
- 
+
 <footer>
   © 2026 yogui hummus
 </footer>
- 
-<script>
-  // Efecto de sombra en el nav al hacer scroll
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Soporte de teclado para las flip cards
+  document.querySelectorAll('.benefit').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
   });
-</script>
- 
-</body>
- 
-</html>
+
+  // Efecto de sombra en el nav al hacer scroll
+  const nav = document.querySel
