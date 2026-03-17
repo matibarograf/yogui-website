@@ -9,7 +9,6 @@
 
 <link rel="icon" type="image/png" href="favicon.png">
 
-<!-- Preconnect para acelerar carga de Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -67,7 +66,7 @@ nav a {
   text-decoration: none;
   margin-left: 25px;
   color: #555;
-  font-size: 0.875rem; /* 14px en rem */
+  font-size: 0.875rem;
   transition: color 0.2s ease;
 }
 
@@ -91,13 +90,13 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 2.875rem; /* ~46px */
+  font-size: 2.875rem;
   color: var(--terracota);
   margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   margin-bottom: 30px;
   line-height: 1.7;
 }
@@ -132,7 +131,7 @@ nav a:hover {
 }
 
 .section h2 {
-  font-size: 2rem; /* 32px */
+  font-size: 2rem;
   margin-bottom: 20px;
   color: var(--terracota);
 }
@@ -140,7 +139,7 @@ nav a:hover {
 .section p {
   max-width: 650px;
   margin: auto;
-  font-size: 1.0625rem; /* 17px */
+  font-size: 1.0625rem;
   line-height: 1.8;
 }
 
@@ -198,7 +197,6 @@ nav a:hover {
   margin-top: 40px;
 }
 
-/* Contenedor externo */
 .benefit {
   width: 220px;
   height: 160px;
@@ -206,7 +204,6 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* Pieza giratoria */
 .benefit-inner {
   width: 100%;
   height: 100%;
@@ -216,12 +213,10 @@ nav a:hover {
   border-radius: 14px;
 }
 
-/* Al hacer click, gira */
 .benefit.flipped .benefit-inner {
   transform: rotateY(180deg);
 }
 
-/* Cara frontal y trasera — base compartida */
 .benefit-front,
 .benefit-back {
   position: absolute;
@@ -235,7 +230,6 @@ nav a:hover {
   -webkit-backface-visibility: hidden;
 }
 
-/* Frente */
 .benefit-front {
   background: white;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
@@ -249,7 +243,6 @@ nav a:hover {
   text-align: center;
 }
 
-/* Dorso */
 .benefit-back {
   background: var(--terracota);
   transform: rotateY(180deg);
@@ -296,7 +289,7 @@ footer {
   text-align: center;
   padding: 30px;
   background: #fafafa;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.8125rem;
   color: #888;
 }
 
@@ -322,15 +315,24 @@ footer {
 
   nav {
     padding: 18px 5%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Links del nav en una sola fila centrada */
+  nav > div:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  nav a {
+    margin-left: 0;
+    font-size: 0.8125rem;
   }
 
   .logo img {
     height: 70px;
-  }
-
-  nav a {
-    margin-left: 14px;
-    font-size: 0.8125rem;
   }
 
   .hero {
@@ -389,7 +391,7 @@ footer {
 
   <div class="hero-text">
 
-    <h1>hummus simple, natural y nutritivo</h1>
+    <h1>hummus</h1>
 
     <p>
       comer bien es simple. <br>
@@ -401,7 +403,6 @@ footer {
 
   </div>
 
-  <!-- fetchpriority="high" para que el navegador cargue esta imagen primero -->
   <img
     src="./Hummus_Plato_Lateral.png"
     alt="plato de hummus yogui"
@@ -432,7 +433,6 @@ footer {
   <div class="products">
 
     <div class="card">
-      <!-- loading="lazy" para imágenes debajo del fold -->
       <img
         src="./hummus_pote250cc.png"
         alt="hummus clásico yogui 250cc"
@@ -453,9 +453,9 @@ footer {
       >
       <h3>hummus ajo asado</h3>
       <p>
-        Con ajos que asamos <br> 
-       por al menos 3 horas. <br>
-       Intenso y equilibrado.
+        Con ajos que asamos <br>
+        por al menos 3 horas. <br>
+        Intenso y equilibrado.
       </p>
     </div>
 
@@ -514,7 +514,7 @@ footer {
 
   <div class="social">
     <a href="https://instagram.com/yogui.arg" target="_blank" rel="noopener noreferrer">instagram</a>
-    <a href="barografmatias@gmail.com">email</a>
+    <a href="mailto:barografmatias@gmail.com">email</a>
     <a href="https://wa.me/5493413259197" target="_blank" rel="noopener noreferrer">whatsApp</a>
   </div>
 
@@ -524,7 +524,7 @@ footer {
   © 2026 yogui hummus
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Soporte de teclado para las flip cards
   document.querySelectorAll('.benefit').forEach(card => {
     card.addEventListener('keydown', e => {
@@ -536,4 +536,12 @@ footer {
   });
 
   // Efecto de sombra en el nav al hacer scroll
-  const nav = document.querySel
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+
+</body>
+
+</html>
