@@ -64,9 +64,11 @@ nav.scrolled {
 
 nav a {
   text-decoration: none;
-  margin-left: 25px;
-  color: #555;
-  font-size: 0.875rem;
+  margin-left: 28px;
+  color: #3a3a3a;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   transition: color 0.2s ease;
 }
 
@@ -319,7 +321,6 @@ footer {
     gap: 12px;
   }
 
-  /* Links del nav en una sola fila centrada */
   nav > div:last-child {
     display: flex;
     justify-content: center;
@@ -328,7 +329,7 @@ footer {
 
   nav a {
     margin-left: 0;
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
   }
 
   .logo img {
@@ -379,10 +380,22 @@ footer {
     </a>
   </div>
 
-  <div>
+  <div style="position:relative; display:flex; align-items:center;">
+
+    <svg aria-hidden="true" viewBox="0 0 340 36" xmlns="http://www.w3.org/2000/svg"
+      style="position:absolute; top:50%; left:0; transform:translateY(-50%); width:100%; height:36px; pointer-events:none; overflow:visible;">
+      <!-- Resaltador filosofía — abajo -->
+      <path d="M4,24 Q30,28 88,22" stroke="#C96F4A" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.3"/>
+      <!-- Resaltador productos — arriba -->
+      <path d="M118,14 Q148,10 218,13" stroke="#C96F4A" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.3"/>
+      <!-- Resaltador contacto — abajo -->
+      <path d="M244,24 Q272,28 336,22" stroke="#C96F4A" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.3"/>
+    </svg>
+
     <a href="#filosofia">filosofía</a>
     <a href="#productos">productos</a>
     <a href="#contacto">contacto</a>
+
   </div>
 
 </nav>
@@ -391,7 +404,7 @@ footer {
 
   <div class="hero-text">
 
-    <h1> el hummus que siempre vas a querer tener en tu heladera</h1>
+    <h1>el hummus que siempre vas a querer tener en tu heladera</h1>
 
     <p>
       Simple y sin excesos, <br>
@@ -418,10 +431,10 @@ footer {
   <p>
     Yogui nace de una idea simple: <br>
     <i>crear alimentos que funcionen como una solución cotidiana. <br>
-    para comer simple y bien, todos los días. </i> <br>
+    para comer simple y bien, todos los días.</i> <br>
     <br>
     <b>el camino para sentirte bien <br>
-   ~ el camino yogui ~</b>
+    ~ el camino yogui ~</b>
   </p>
 
 </section>
@@ -509,7 +522,7 @@ footer {
 <section class="contact" id="contacto">
 
   <h2>contacto</h2>
-<br>
+  <br>
   <p><i>¿querés vender yogui o saber más sobre nosotros?</i></p>
 
   <div class="social">
@@ -525,7 +538,6 @@ footer {
 </footer>
 
 <script>
-  // Soporte de teclado para las flip cards
   document.querySelectorAll('.benefit').forEach(card => {
     card.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -535,7 +547,6 @@ footer {
     });
   });
 
-  // Efecto de sombra en el nav al hacer scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
