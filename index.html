@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Yogui Hummus — el hummus que siempre vas a querer tener en tu heladera. Simple, natural y sin octógonos. Entrega en Rosario.">
+<meta name="description" content="Yogui Hummus — el hummus que siempre vas a querer tener en tu heladera. Simple, natural y de todos los días. Entrega en Rosario.">
 
 <title>yogui hummus</title>
 
@@ -22,12 +22,40 @@
   --lino: #FAF0E6;
   --arena: #E9E2D8;
   --text: #3a3a3a;
+  --nav-h: 180px; /* altura del nav: la recalcula el JS del final */
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* evita que iOS agrande el texto solo */
+}
+
+/* corta cualquier scroll horizontal en celular */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* compensa el nav sticky cuando saltás con los links de arriba */
+section[id] {
+  scroll-margin-top: calc(var(--nav-h) + 8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.01ms !important; }
 }
 
 h1, h2, h3 {
@@ -61,6 +89,22 @@ nav.scrolled {
   height: 140px;
   width: auto;
   display: block;
+}
+
+.nav-links {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-scribble {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 36px;
+  pointer-events: none;
 }
 
 nav a {
@@ -153,6 +197,7 @@ nav a:hover {
 
 .step {
   width: 200px;
+  max-width: 100%;
   text-align: center;
 }
 
@@ -212,6 +257,7 @@ nav a:hover {
   padding: 30px;
   border-radius: 14px;
   width: 260px;
+  max-width: 100%;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -290,6 +336,7 @@ nav a:hover {
 
 .benefit {
   width: 220px;
+  max-width: 100%;
   height: 160px;
   perspective: 1000px;
   cursor: pointer;
@@ -424,9 +471,26 @@ footer {
 
 @media (max-width: 900px) {
 
+  nav {
+    padding: 16px 6%;
+  }
+
+  .logo img {
+    height: 110px;
+  }
+
+  nav a {
+    margin-left: 20px;
+  }
+
   .hero {
     flex-direction: column;
     text-align: center;
+    padding: 60px 6%;
+  }
+
+  .hero-text {
+    max-width: 100%;
   }
 
   .hero img {
@@ -434,22 +498,36 @@ footer {
     width: 100%;
   }
 
+  .section {
+    padding: 70px 6%;
+  }
+
 }
 
 /* RESPONSIVE — móviles */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
   nav {
-    padding: 14px 5%;
+    padding: 12px 5%;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
-  nav > div:last-child {
-    display: flex;
+  .logo img {
+    height: 90px;
+  }
+
+  .nav-links {
+    width: 100%;
     justify-content: center;
-    gap: 20px;
+    gap: 22px;
+  }
+
+  /* el subrayado está dibujado a la medida del nav de escritorio;
+     en celular quedaría desalineado, así que no se muestra */
+  .nav-scribble {
+    display: none;
   }
 
   nav a {
@@ -457,16 +535,12 @@ footer {
     font-size: 0.9375rem;
   }
 
-  .logo img {
-    height: 100px;
-  }
-
   .hero {
-    padding: 50px 5%;
+    padding: 40px 6%;
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 
   .hero p {
@@ -474,19 +548,33 @@ footer {
   }
 
   .section {
-    padding: 60px 5%;
+    padding: 56px 6%;
   }
 
   .section h2 {
     font-size: 1.625rem;
   }
 
-  .card {
+  .products,
+  .steps,
+  .benefit-grid {
+    gap: 24px;
+    margin-top: 30px;
+  }
+
+  .card,
+  .step,
+  .benefit {
     width: 100%;
   }
 
-  .benefit {
-    width: 100%;
+  .contact {
+    padding: 56px 6%;
+  }
+
+  .wsp-float {
+    bottom: 18px;
+    right: 18px;
   }
 
 }
@@ -501,14 +589,13 @@ footer {
 
   <div class="logo">
     <a href="#">
-      <img src="./yogui_logo.webp" alt="yogui hummus — ir al inicio">
+      <img src="./yogui_logo.png" alt="yogui hummus — ir al inicio">
     </a>
   </div>
 
-  <div style="position:relative; display:flex; align-items:center;">
+  <div class="nav-links">
 
-    <svg aria-hidden="true" viewBox="0 0 340 36" xmlns="http://www.w3.org/2000/svg"
-      style="position:absolute; top:50%; left:0; transform:translateY(-50%); width:100%; height:36px; pointer-events:none; overflow:visible;">
+    <svg class="nav-scribble" aria-hidden="true" viewBox="0 0 340 36" xmlns="http://www.w3.org/2000/svg">
       <path d="M4,24 Q30,28 88,22" stroke="#C96F4A" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.3"/>
       <path d="M118,14 Q148,10 218,13" stroke="#C96F4A" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.3"/>
       <path d="M244,24 Q272,28 336,22" stroke="#C96F4A" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.3"/>
@@ -534,7 +621,7 @@ footer {
       Hummus para todos los días.
     </p>
 
-    <a class="btn" href="https://wa.me/5493413259197?text=Hola%2C%20quiero%20pedir%20un%20hummus%20yogui%20%F0%9F%91%8B" target="_blank" rel="noopener noreferrer">hacé tu pedido</a>
+    <a class="btn" href="https://wa.me/5493413259197?text=Hola%20yogui%21%20Quiero%20pedir%20hummus%20por%20favor." target="_blank" rel="noopener noreferrer">hacé tu pedido</a>
 
   </div>
 
@@ -577,7 +664,7 @@ footer {
       </p>
 
       <!-- Botón WhatsApp con mensaje pre-escrito -->
-      <a class="btn-wsp" href="https://wa.me/5493413259197?text=Hola%2C%20quiero%20pedir%20un%20hummus%20yogui%20%F0%9F%91%8B" target="_blank" rel="noopener noreferrer">
+      <a class="btn-wsp" href="https://wa.me/5493413259197?text=Hola%20yogui%21%20Quiero%20pedir%20hummus%20por%20favor." target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.113 1.523 5.843L.057 23.617a.75.75 0 0 0 .921.921l5.773-1.466A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 0 1-4.964-1.362l-.357-.212-3.699.94.957-3.607-.232-.371A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
@@ -671,7 +758,7 @@ footer {
 </footer>
 
 <!-- Botón flotante WhatsApp -->
-<a class="wsp-float" href="https://wa.me/5493413259197" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+<a class="wsp-float" href="https://wa.me/5493413259197?text=Hola%20yogui%21%20Quiero%20pedir%20hummus%20por%20favor." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.113 1.523 5.843L.057 23.617a.75.75 0 0 0 .921.921l5.773-1.466A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 0 1-4.964-1.362l-.357-.212-3.699.94.957-3.607-.232-.371A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
@@ -689,9 +776,21 @@ footer {
   });
 
   const nav = document.querySelector('nav');
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
   });
+
+  /* mide la altura real del nav y la guarda en --nav-h:
+     así los links de arriba no dejan la sección tapada */
+  const setNavHeight = () => {
+    document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  };
+
+  setNavHeight();
+  window.addEventListener('load', setNavHeight);
+  window.addEventListener('resize', setNavHeight);
+  if (document.fonts) document.fonts.ready.then(setNavHeight);
 </script>
 
 </body>
